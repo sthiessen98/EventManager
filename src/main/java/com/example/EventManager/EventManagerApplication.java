@@ -9,10 +9,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-/*
+
 import com.example.EventManager.domain.Event;
 import com.example.EventManager.domain.EventRepository;
-*/
+
 
 @SpringBootApplication
 public class EventManagerApplication {
@@ -21,7 +21,7 @@ public class EventManagerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EventManagerApplication.class, args);
 	}
-	/*
+	
 	@Bean
 	public CommandLineRunner demo(EventRepository Erepo) {
 		return(args)->{
@@ -37,6 +37,6 @@ public class EventManagerApplication {
 			}
 		};
 	}
-	*/
+	
 
 }

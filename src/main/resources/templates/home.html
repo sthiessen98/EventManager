@@ -5,6 +5,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>This is the homepage</h1>
+	<h1>Events</h1>
+    <table>
+		<tr>
+		    <th>Event Name</th>
+		    <th>Start Date</th>
+		    <th>End Date</th>
+		</tr>  
+    	<tr th:each = "event : ${events}">
+    		<td th:text="${event.name}"></td>
+    		<td th:text="${event.startDate}"></td>
+ 				<td th:text="${event.endDate}"></td>    		
+    	</tr>
+     </table>  	
 </body>
 </html>
