@@ -1,10 +1,27 @@
+
 package com.example.EventManager.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Attendee {
 	
-	public String firstName;
-	public String lastName;
-	public Event event;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
+	
+	private String firstName;
+	private String lastName;
+	
+	public Attendee() {}
+
+	public Attendee(String firstName, String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
 	
 	public String getFirstName() {
 		return firstName;
@@ -18,10 +35,11 @@ public class Attendee {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Event getEvent() {
-		return event;
+
+	@Override
+	public String toString() {
+		return "Attendee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
-	public void setEvent(Event event) {
-		this.event = event;
-	}
+	
+	
 }
