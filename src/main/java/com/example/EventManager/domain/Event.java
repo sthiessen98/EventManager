@@ -1,12 +1,12 @@
 package com.example.EventManager.domain;
 
-
-import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Event {
@@ -18,7 +18,9 @@ public class Event {
 	private String name;
 	private String startDate;
 	private String endDate;
-	
+
+	@ManyToMany
+	private List<Attendee> attendees;
 
 
 	public Event() {}
@@ -60,13 +62,19 @@ public class Event {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
+	
+
+	public List<Attendee> getAttendees() {
+		return attendees;
+	}
+
+	public void setAttendees(List<Attendee> attendees) {
+		this.attendees = attendees;
+	}
 
 	@Override
 	public String toString() {
 		return "Event [id=" + id + ", name=" + name + ", startDate=" + startDate + ", endDate=" + endDate + "]";
 	}
-
-
-
 	
 }
