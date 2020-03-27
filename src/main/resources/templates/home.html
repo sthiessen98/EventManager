@@ -16,7 +16,8 @@
     		<td th:text="${event.name}"></td>
     		<td th:text="${event.startDate}"></td>
  			<td th:text="${event.endDate}"></td>    
- 			<td><a th:href="@{/delete/{id}(id=${event.id})}">Delete</a></td>			
+ 			<td><a th:href="@{/delete/{id}(id=${event.id})}">Delete</a></td>	
+ 			<td><a th:href="@{/edit/{id}(id=${event.id})}">Edit</a></td>		
     	</tr>
      </table>  	
      <a href="/addEvent">Add Event</a>

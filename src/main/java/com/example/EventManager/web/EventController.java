@@ -47,5 +47,11 @@ public class EventController {
     	Erepository.deleteById(eventId);
     	return "redirect:../home";
     }
+    
+    @RequestMapping(value="/edit/{id}", method = RequestMethod.GET)
+    public String editEvent(@PathVariable("id") Long eventId, Model model){
+    	model.addAttribute("event", Erepository.findById(eventId));
+    	return "editEvent";
+    }
 	
 }
