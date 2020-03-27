@@ -9,7 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-
+import com.example.EventManager.domain.Attendee;
+import com.example.EventManager.domain.AttendeeRepository;
 import com.example.EventManager.domain.Event;
 import com.example.EventManager.domain.EventRepository;
 
@@ -23,7 +24,7 @@ public class EventManagerApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(EventRepository Erepo) {
+	public CommandLineRunner demo(EventRepository Erepo, AttendeeRepository Arepo) {
 		return(args)->{
 			log.info("Added events to repo..");
 			//Add a couple test Events
@@ -35,8 +36,16 @@ public class EventManagerApplication {
 			for(Event event : Erepo.findAll()) {
 				log.info(event.toString());
 			}
+			
+			log.info("Added test attendees to repo");
+			Arepo.save(new Attendee("Paul", "Rudd"));
+			Arepo.save(new Attendee("Matt", "Thompson"));
+			
+			log.info("Fetch all attendees..");
+			for(Attendee attendee : Arepo.findAll()) {
+				log.info(attendee.toString());
+			}
 		};
 	}
-	
 
 }
