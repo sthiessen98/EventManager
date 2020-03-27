@@ -16,14 +16,14 @@ public class Event {
 	private Long id;
 	
 	private String name;
-	private LocalDate startDate;
-	private LocalDate endDate;
+	private String startDate;
+	private String endDate;
 	
 
 
 	public Event() {}
 	
-	public Event(String name, LocalDate startDate, LocalDate endDate) {
+	public Event(String name, String startDate, String endDate) {
 		this.name = name;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -37,19 +37,19 @@ public class Event {
 		this.name = name;
 	}
 	
-	public LocalDate getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(LocalDate startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 
-	public LocalDate getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(LocalDate endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 

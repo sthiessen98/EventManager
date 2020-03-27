@@ -9,7 +9,7 @@
 	<div>
 		<form th:object="${event}" th:action="@{save}" action="#" method="post">
 		  	<label for="name">Event Name</label>
-			<input type="text" id="fname" th:field="*{name}" />
+			<input type="text" id="name" th:field="*{name}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	<label for="startDate">Start Date</label>
 			<input type="text" id="startDate" th:field="*{startDate}" />

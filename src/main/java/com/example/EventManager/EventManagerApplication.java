@@ -28,9 +28,9 @@ public class EventManagerApplication {
 		return(args)->{
 			log.info("Added events to repo..");
 			//Add a couple test Events
-			Erepo.save(new Event("My Test Event",LocalDate.parse("2015-01-02"),LocalDate.parse("2015-01-04")));
-			Erepo.save(new Event("Birthday Party",LocalDate.parse("2017-03-02"),LocalDate.parse("2017-03-03")));
-			Erepo.save(new Event("Concert",LocalDate.parse("2017-05-27"),LocalDate.parse("2017-06-01")));
+			Erepo.save(new Event("My Test Event", "2015-01-02", "2015-01-04"));
+			Erepo.save(new Event("Birthday Party", "2017-03-02", "2017-03-03"));
+			Erepo.save(new Event("Concert", "2017-05-27", "2017-06-01"));
 
 			log.info("Fetch all events");
 			for(Event event : Erepo.findAll()) {
