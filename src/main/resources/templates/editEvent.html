@@ -3,22 +3,23 @@
 <head>
     <title>AddEvent</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
 	<h1>Edit Event</h1>
 	<div>
 		<form th:object="${event}" th:action="@{../save}" action="#" method="post">
+			<input type="hidden" th:field="*{id}"  class="form-control"/>
 		  	<label for="name">Event Name</label>
-		  	<input type="hidden" th:field="*{id}" class="form-control"/>
-			<input type="text" id="name" th:field="*{name}" />
+			<input type="text" id="name" th:field="*{name}" class="form-control"/>
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	<label for="startDate">Start Date</label>
-			<input type="text" id="startDate" th:field="*{startDate}" />
+			<input type="text" id="startDate" th:field="*{startDate}" class="form-control"/>
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	<label for="endDate">End Date</label>
-			<input type="text" th:field="*{endDate}" />
+			<input type="text" th:field="*{endDate}" class="form-control"/>
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<input type="submit" value="Save"></input>
+			<input type="submit" class="btn btn-primary" value="Save"></input>
 		</form>
 	</div>
 </body>
