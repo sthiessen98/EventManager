@@ -18,15 +18,17 @@ public class Attendee {
 	
 	private String firstName;
 	private String lastName;
+	private String username;
 
 	@ManyToMany(mappedBy = "attendees")
 	private List<Event> events;
 	
 	public Attendee() {}
 
-	public Attendee(String firstName, String lastName) {
+	public Attendee(String firstName, String lastName, String username) {
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.username = username;
 	}
 	
 
@@ -55,10 +57,16 @@ public class Attendee {
 	public void setEvents(List<Event> events) {
 		this.events = events;
 	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 	@Override
 	public String toString() {
-		return "Attendee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + "]";
+		return "Attendee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + "username=" + username + "]";
 	}
 	
 	

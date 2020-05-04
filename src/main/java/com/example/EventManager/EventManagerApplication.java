@@ -13,6 +13,8 @@ import com.example.EventManager.domain.Attendee;
 import com.example.EventManager.domain.AttendeeRepository;
 import com.example.EventManager.domain.Event;
 import com.example.EventManager.domain.EventRepository;
+import com.example.EventManager.domain.User;
+import com.example.EventManager.domain.UserRepository;
 
 
 @SpringBootApplication
@@ -24,7 +26,7 @@ public class EventManagerApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(EventRepository Erepo, AttendeeRepository Arepo) {
+	public CommandLineRunner demo(EventRepository Erepo, AttendeeRepository Arepo, UserRepository uRepo) {
 		return(args)->{
 			log.info("Added events to repo..");
 			//Add a couple test Events
@@ -37,14 +39,21 @@ public class EventManagerApplication {
 				log.info(event.toString());
 			}
 			
-			log.info("Added test attendees to repo");
-			Arepo.save(new Attendee("Paul", "Rudd"));
-			Arepo.save(new Attendee("Matt", "Thompson"));
+			//Add a couple of test Attendees
+			log.info("Added test attendees to repo..");
+			Arepo.save(new Attendee("Spencer", "Thiessen", "sthiessen"));
+			Arepo.save(new Attendee("Matt", "Thompson", "mthompson"));
 			
 			log.info("Fetch all attendees..");
 			for(Attendee attendee : Arepo.findAll()) {
 				log.info(attendee.toString());
 			}
+			
+			User user1 = new User("sthiessen", "$2a$10$XucSWZodB/ffmUVbkxhu4uqFrWPK4fBx02chp5SESipShCegekpKi", "ORGANIZER"); //sthiessen, Password1
+			User user2 = new User("mthompson","$2a$10$6R4H7BNa.iBE.RNzDGXrxeA640y.23e/95/tV/p/nXjPuVl51DGKW","ATTENDEE"); //mthompson, Password2
+			
+			uRepo.save(user1);
+			uRepo.save(user2);
 		};
 	}
 

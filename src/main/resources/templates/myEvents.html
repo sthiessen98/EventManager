@@ -1,25 +1,23 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Event Manager Home</title>
+    <title>My Events</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
-<body>
-	<h1 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]!</h1>
-	
+<body>	
 	<ul class="nav nav-tabs">
 		<li class="nav-item">
-			<a class="nav-link active" href="/home">Home</a>
+			<a class="nav-link" href="/home">Home</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/myEvents">My Registered Events</a>
+			<a class="nav-link active" href="/myEvents">My Registered Events</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="/login?logout">Logout</a>
 		</li>
 	</ul>
-	<h1>Events</h1>
+	<h1>My Registered Events</h1>
 
     <table class="table table-striped">
 		<tr>
@@ -31,10 +29,8 @@
     		<td th:text="${event.name}"></td>
     		<td th:text="${event.startDate}"></td>
  			<td th:text="${event.endDate}"></td>    
- 			<td><a th:href="@{/delete/{id}(id=${event.id})}" class="btn btn-danger">Delete</a></td>	
  			<td><a th:href="@{/edit/{id}(id=${event.id})}" class = "btn btn-warning">Edit</a></td>		
     	</tr>
      </table>  	
-     <a href="/addEvent" class="btn btn-primary">Add Event</a>
 </body>
 </html>

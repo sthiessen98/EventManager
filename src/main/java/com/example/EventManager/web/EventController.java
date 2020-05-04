@@ -31,7 +31,14 @@ public class EventController {
 		model.addAttribute("events", Erepository.findAll());
 		return "home";
 	}
-	
+	/*
+	@RequestMapping("/myEvents")
+	public String myEvents(Model model) {
+		Attendee attendee = Arepository.findByUsername("sthiessen");
+		model.addAttribute("events", attendee.getEvents());
+		return "myEvents";
+	}
+	*/
 	@RequestMapping("/addEvent")
 	public String addEvent(Model model) {
 		model.addAttribute("event", new Event());
