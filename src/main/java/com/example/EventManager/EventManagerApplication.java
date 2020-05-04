@@ -49,6 +49,8 @@ public class EventManagerApplication {
 				log.info(attendee.toString());
 			}
 			
+			
+			//Add 2 users. 1 Organizer, 1 Attendee
 			User user1 = new User("sthiessen", "$2a$10$XucSWZodB/ffmUVbkxhu4uqFrWPK4fBx02chp5SESipShCegekpKi", "ORGANIZER"); //sthiessen, Password1
 			User user2 = new User("mthompson","$2a$10$6R4H7BNa.iBE.RNzDGXrxeA640y.23e/95/tV/p/nXjPuVl51DGKW","ATTENDEE"); //mthompson, Password2
 			

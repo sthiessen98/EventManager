@@ -1,5 +1,6 @@
 package com.example.EventManager.web;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,16 +26,15 @@ public class EventController {
 	@Autowired
 	private AttendeeRepository Arepository;
 	
-	
 	@RequestMapping("/home")
-	public String home(Model model) {
+	public String home(Model model, Principal principal) {
 		model.addAttribute("events", Erepository.findAll());
 		return "home";
 	}
 	
 	@RequestMapping("/myEvents")
-	public String myEvents(Model model) {
-		Attendee attendee = Arepository.findByUsername("sthiessen");
+	public String myEvents(Model model, Principal principal) {
+		Attendee attendee = Arepository.findByUsername(principal.getName());
 		model.addAttribute("events", attendee.getEvents());
 		return "myEvents";
 	}
