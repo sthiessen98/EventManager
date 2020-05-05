@@ -26,12 +26,14 @@ public class EventController {
 	@Autowired
 	private AttendeeRepository Arepository;
 	
+	//home page
 	@RequestMapping("/home")
 	public String home(Model model, Principal principal) {
 		model.addAttribute("events", Erepository.findAll());
 		return "home";
 	}
 	
+	//Attendees current events page
 	@RequestMapping("/myEvents")
 	public String myEvents(Model model, Principal principal) {
 		Attendee attendee = Arepository.findByUsername(principal.getName());
@@ -39,30 +41,35 @@ public class EventController {
 		return "myEvents";
 	}
 	
+	//Event creation
 	@RequestMapping("/addEvent")
 	public String addEvent(Model model) {
 		model.addAttribute("event", new Event());
 		return "addEvent";
 	}
 	
+	//Saving event after creation or edit
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(Event event){
         Erepository.save(event);
         return "redirect:home";
     }  
     
+    //Event deletion
     @RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
     public String deleteEvent(@PathVariable("id") Long eventId, Model model) {
     	Erepository.deleteById(eventId);
     	return "redirect:../home";
     }
     
+    //Event editing
     @RequestMapping(value="/edit/{id}", method = RequestMethod.GET)
     public String editEvent(@PathVariable("id") Long eventId, Model model){
     	model.addAttribute("event", Erepository.findById(eventId));
     	return "editEvent";
     }
     
+    //Event registration for attendee
     @RequestMapping(value="/register/{id}", method = RequestMethod.GET)
     public String registerEvent(@PathVariable("id") Long eventId, Principal principal) {
     	Optional<Event> optEvent = Erepository.findById(eventId);
