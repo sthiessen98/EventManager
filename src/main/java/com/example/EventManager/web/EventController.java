@@ -68,12 +68,14 @@ public class EventController {
     	Optional<Event> optEvent = Erepository.findById(eventId);
     	Attendee attendee = Arepository.findByUsername(principal.getName());
     	Event event = optEvent.get();
+    	List<Event> currEvents = attendee.getEvents();
+    	if(!currEvents.contains(event)) {
+        	event.addAttendee(attendee);
+        	attendee.addEvents(event);
+            Erepository.save(event);
+            Arepository.save(attendee);
+    	}
     	
-    	event.addAttendee(attendee);
-    	attendee.addEvents(event);
-    	
-    	Erepository.save(event);
-    	Arepository.save(attendee);
     	return "redirect:../home";
     }
     
