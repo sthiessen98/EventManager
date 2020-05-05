@@ -63,6 +63,20 @@ public class EventController {
     	return "editEvent";
     }
     
+    @RequestMapping(value="/register/{id}", method = RequestMethod.GET)
+    public String registerEvent(@PathVariable("id") Long eventId, Principal principal) {
+    	Optional<Event> optEvent = Erepository.findById(eventId);
+    	Attendee attendee = Arepository.findByUsername(principal.getName());
+    	Event event = optEvent.get();
+    	
+    	event.addAttendee(attendee);
+    	attendee.addEvents(event);
+    	
+    	Erepository.save(event);
+    	Arepository.save(attendee);
+    	return "redirect:../home";
+    }
+    
     /*
      *  RESTful API / START
      */

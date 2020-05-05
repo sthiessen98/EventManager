@@ -71,6 +71,10 @@ public class Event {
 	public void setAttendees(List<Attendee> attendees) {
 		this.attendees = attendees;
 	}
+	
+	public void addAttendee(Attendee attendee) {
+		this.attendees.add(attendee);
+	}
 
 	@Override
 	public String toString() {

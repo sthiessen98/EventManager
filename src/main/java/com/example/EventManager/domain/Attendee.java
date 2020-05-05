@@ -57,6 +57,10 @@ public class Attendee {
 	public void setEvents(List<Event> events) {
 		this.events = events;
 	}
+	public void addEvents(Event event) {
+		this.events.add(event);
+	}
+	
 	public String getUsername() {
 		return username;
 	}

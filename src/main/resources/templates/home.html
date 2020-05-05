@@ -32,7 +32,9 @@
     		<td th:text="${event.startDate}"></td>
  			<td th:text="${event.endDate}"></td>    
  			<td><a th:href="@{/delete/{id}(id=${event.id})}" class="btn btn-danger">Delete</a></td>	
- 			<td><a th:href="@{/edit/{id}(id=${event.id})}" class = "btn btn-warning">Edit</a></td>		
+ 			<td><a th:href="@{/edit/{id}(id=${event.id})}" class = "btn btn-warning">Edit</a></td>
+ 			<td><a th:href="@{/register/{id}(id=${event.id})}" class = "btn btn-info">Register</a></td>
+ 					
     	</tr>
      </table>  	
      <a href="/addEvent" class="btn btn-primary">Add Event</a>
