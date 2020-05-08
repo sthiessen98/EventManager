@@ -17,6 +17,7 @@ import com.example.EventManager.domain.User;
 import com.example.EventManager.domain.UserRepository;
 
 
+
 @SpringBootApplication
 public class EventManagerApplication {
 	private static final Logger log = LoggerFactory.getLogger(EventManagerApplication.class);
@@ -25,6 +26,7 @@ public class EventManagerApplication {
 		SpringApplication.run(EventManagerApplication.class, args);
 	}
 
+/*
 	@Bean
 	public CommandLineRunner demo(EventRepository Erepo, AttendeeRepository Arepo, UserRepository uRepo) {
 		return(args)->{
@@ -60,4 +62,5 @@ public class EventManagerApplication {
 			}
 		};
 	}
+*/
 }

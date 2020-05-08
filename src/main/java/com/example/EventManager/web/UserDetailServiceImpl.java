@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.example.EventManager.domain.User;
 import com.example.EventManager.domain.UserRepository;
 
-
 @Service
 public class UserDetailServiceImpl implements UserDetailsService  {
 	private final UserRepository repository;
