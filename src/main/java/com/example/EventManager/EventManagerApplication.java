@@ -24,20 +24,11 @@ public class EventManagerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EventManagerApplication.class, args);
 	}
-	
+
 	@Bean
 	public CommandLineRunner demo(EventRepository Erepo, AttendeeRepository Arepo, UserRepository uRepo) {
 		return(args)->{
-			log.info("Added events to repo..");
-			//Add a couple test Events
-			Erepo.save(new Event("My Test Event", "2015-01-02", "2015-01-04"));
-			Erepo.save(new Event("Birthday Party", "2017-03-02", "2017-03-03"));
-			Erepo.save(new Event("Concert", "2017-05-27", "2017-06-01"));
-
-			log.info("Fetch all events");
-			for(Event event : Erepo.findAll()) {
-				log.info(event.toString());
-			}
+			
 			
 			//Add a couple of test Attendees
 			log.info("Added test attendees to repo..");
@@ -56,7 +47,17 @@ public class EventManagerApplication {
 			
 			uRepo.save(user1);
 			uRepo.save(user2);
+			
+			log.info("Added events to repo..");
+			//Add a couple test Events
+			Erepo.save(new Event("My Test Event", "2015-01-02", "2015-01-04", "sthiessen"));
+			Erepo.save(new Event("Birthday Party", "2017-03-02", "2017-03-03", "sthiessen"));
+			Erepo.save(new Event("Concert", "2017-05-27", "2017-06-01", "sthiessen"));
+
+			log.info("Fetch all events");
+			for(Event event : Erepo.findAll()) {
+				log.info(event.toString());
+			}
 		};
 	}
-
 }

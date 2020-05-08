@@ -7,8 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Event")
 public class Event {
 
 	@Id
@@ -18,17 +20,20 @@ public class Event {
 	private String name;
 	private String startDate;
 	private String endDate;
+	private String organizer;
 
 	@ManyToMany
 	private List<Attendee> attendees;
 
 
+
 	public Event() {}
 	
-	public Event(String name, String startDate, String endDate) {
+	public Event(String name, String startDate, String endDate, String organizer) {
 		this.name = name;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.organizer = organizer;
 
 	}
 	
@@ -75,6 +80,15 @@ public class Event {
 	public void addAttendee(Attendee attendee) {
 		this.attendees.add(attendee);
 	}
+	
+	public String getOrganizer() {
+		return organizer;
+	}
+
+	public void setOrganizer(String organizer) {
+		this.organizer = organizer;
+	}
+
 
 	@Override
 	public String toString() {

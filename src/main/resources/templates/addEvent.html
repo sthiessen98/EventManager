@@ -9,6 +9,7 @@
 	<h1>New Event</h1>
 	<div>
 		<form th:object="${event}" th:action="@{save}" action="#" method="post">
+			<input type="hidden" id="name" th:field="*{organizer}"/>
 		  	<label for="name">Event Name</label>
 			<input type="text" id="name" th:field="*{name}" class="form-control"/>
 			<div style="clear: both; display: block; height: 10px;"></div>

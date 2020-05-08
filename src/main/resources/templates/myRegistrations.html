@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>My Events</title>
+    <title>My Registered Events</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
@@ -24,12 +24,14 @@
 		    <th>Event Name</th>
 		    <th>Start Date</th>
 		    <th>End Date</th>
+		    <th>Organizer</th>
 		</tr>  
     	<tr th:each = "event : ${events}">
     		<td th:text="${event.name}"></td>
     		<td th:text="${event.startDate}"></td>
- 			<td th:text="${event.endDate}"></td>    
- 			<td><a th:href="@{/edit/{id}(id=${event.id})}" class = "btn btn-warning">Edit</a></td>		
+ 			<td th:text="${event.endDate}"></td>
+ 			<td th:text="${event.organizer}"></td>     
+ 			<td><a th:if="${user == event.organizer}" th:href="@{/edit/{id}(id=${event.id})}" class = "btn btn-warning">Edit</a></td>		
     	</tr>
      </table>  	
 </body>

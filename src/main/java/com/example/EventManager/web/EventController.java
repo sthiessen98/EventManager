@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,8 @@ import com.example.EventManager.domain.Attendee;
 import com.example.EventManager.domain.AttendeeRepository;
 import com.example.EventManager.domain.Event;
 import com.example.EventManager.domain.EventRepository;
+import com.example.EventManager.domain.User;
+import com.example.EventManager.domain.UserRepository;
 
 @Controller
 public class EventController {
@@ -26,10 +29,16 @@ public class EventController {
 	@Autowired
 	private AttendeeRepository Arepository;
 	
+	@Autowired
+	private UserRepository Urepository;
+	
 	//home page
 	@RequestMapping("/home")
 	public String home(Model model, Principal principal) {
+		String role = Urepository.findByUsername(principal.getName()).getRole();
 		model.addAttribute("events", Erepository.findAll());
+		model.addAttribute("role", role);
+		model.addAttribute("user", principal.getName());
 		return "home";
 	}
 	
@@ -38,13 +47,17 @@ public class EventController {
 	public String myEvents(Model model, Principal principal) {
 		Attendee attendee = Arepository.findByUsername(principal.getName());
 		model.addAttribute("events", attendee.getEvents());
-		return "myEvents";
+		model.addAttribute("user", principal.getName());
+		return "myRegistrations";
 	}
 	
 	//Event creation
 	@RequestMapping("/addEvent")
-	public String addEvent(Model model) {
-		model.addAttribute("event", new Event());
+	@PreAuthorize("hasAuthority('ORGANIZER')")
+	public String addEvent(Model model, Principal principal) {
+		Event event = new Event();
+		event.setOrganizer(Urepository.findByUsername(principal.getName()).getUsername());
+		model.addAttribute("event", event);
 		return "addEvent";
 	}
 	
@@ -85,6 +98,16 @@ public class EventController {
     	
     	return "redirect:../home";
     }
+    
+    
+   //User Registration
+    @RequestMapping(value="/userRegistration", method = RequestMethod.GET)
+    public String userRegistration(Model model) {
+    	model.addAttribute("user", new User());
+    	model.addAttribute("confirmPassword", new String());
+    	return "registration";
+    }
+    
     
     /*
      *  RESTful API / START

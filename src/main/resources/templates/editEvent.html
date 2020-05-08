@@ -10,6 +10,7 @@
 	<div>
 		<form th:object="${event}" th:action="@{../save}" action="#" method="post">
 			<input type="hidden" th:field="*{id}" />
+			<input type="hidden" th:field="*{organizer}" />
 			<input type="hidden" th:field="*{attendees}"/>
 		  	<label for="name">Event Name</label>
 			<input type="text" id="name" th:field="*{name}" class="form-control"/>
